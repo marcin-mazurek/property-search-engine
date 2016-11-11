@@ -5,12 +5,13 @@ import slugify from './slugify';
 
 const basePath = 'https://www.olx.pl/nieruchomosci';
 
-export default function buildUrl(filters: Filters) : string {
+export default function buildUrl(filters: Filters, page = 1) : string {
   const url = new URLBuilder(basePath);
 
   url.addSegment(TypeMap[filters.type]);
   url.addSegment(CategoryMap[filters.category]);
   url.addSegment(slugify(filters.location));
+  url.addQueryStringPart('page', page.toString());
 
   if (filters.priceFrom) {
     url.addQueryStringPart('search[filter_float_price:from]', filters.priceFrom.toString());

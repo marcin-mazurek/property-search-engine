@@ -17,6 +17,10 @@ function getSearchParamsFromURL(url) {
   return url.split('?')[1].split('&');
 }
 
+function getURLSegments(url) {
+  return url.split('?')[0].split('/').slice(3);
+}
+
 describe('buildUrl()', () => {
   it('builds a URL containing the OLX host', () => {
     const url = buildUrl(defaultFilters);
@@ -27,28 +31,32 @@ describe('buildUrl()', () => {
     const url = buildUrl(
       mergeFilterOptionsWithDefaults({ type: Type.Apartment })
     );
-    expect(url.split('/')[4]).to.equal('mieszkania');
+    const segments = getURLSegments(url);
+    expect(segments[1]).to.equal('mieszkania');
   });
 
   it('builds a URL with an offer category', () => {
     const url = buildUrl(
       mergeFilterOptionsWithDefaults({ category: Category.Rental })
     );
-    expect(url.split('/')[5]).to.equal('wynajem');
+    const segments = getURLSegments(url);
+    expect(segments[2]).to.equal('wynajem');
   });
 
   it('builds a URL with location for a single word city', () => {
     const url = buildUrl(
       mergeFilterOptionsWithDefaults({ location: 'Warszawa' })
     );
-    expect(url.split('/')[6]).to.equal('warszawa');
+    const segments = getURLSegments(url);
+    expect(segments[3]).to.equal('warszawa');
   });
 
   it('builds a URL with location for a multiple word city with custom characters', () => {
     const url = buildUrl(
       mergeFilterOptionsWithDefaults({ location: 'Siemianowice Śląskie' })
     );
-    expect(url.split('/')[6]).to.equal('siemianowice-slaskie');
+    const segments = getURLSegments(url);
+    expect(segments[3]).to.equal('siemianowice-slaskie');
   });
 
   it('builds a URL with a "price from" parameter if specified', () => {
@@ -114,5 +122,17 @@ describe('buildUrl()', () => {
   it('builds a URL without market parameter if not specified', () => {
     const url = buildUrl(defaultFilters);
     expect(url).not.to.contain('search[filter_enum_market]');
+  });
+
+  it('builds a URL with page param if specified', () => {
+    const url = buildUrl(defaultFilters, 2);
+    const searchParams = getSearchParamsFromURL(url);
+    expect(searchParams).to.contain('page=2');
+  });
+
+  it('builds a URL with default page param if page is not specified', () => {
+    const url = buildUrl(defaultFilters);
+    const searchParams = getSearchParamsFromURL(url);
+    expect(searchParams).to.contain('page=1');
   });
 });
