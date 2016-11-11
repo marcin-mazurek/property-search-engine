@@ -1,0 +1,25 @@
+{
+  "name": "property-search-engine",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "mocha --require ts-node/register **/*.spec.ts"
+  },
+  "author": "Marcin Mazurek <marcin@mazurek.pro>",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-fetch": "^1.6.3",
+    "typescript": "2.1-rc"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "chai": "^3.5.0",
+    "core-js": "^2.4.1",
+    "mocha": "^3.1.2",
+    "ts-node": "^1.7.0"
+  }
+}
