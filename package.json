@@ -12,7 +12,7 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "node-fetch": "^1.6.3",
-    "typescript": "2.1-rc"
+    "typescript": "^2.1.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
