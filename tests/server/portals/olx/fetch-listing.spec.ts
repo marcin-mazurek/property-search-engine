@@ -28,6 +28,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Ochota',
       additionDate: '18  lis',
       price: 141000,
+      offerUrl: 'https://otodom.pl/oferta/mieszkanie-19-m-warszawa-ID37R00.html',
       thumbnailUrl: 'https://olxpl-ring11.akamaized.net/images_tablicapl/454635397_1_261x203_mieszkanie-19-m-warszawa-warszawa.jpg'
     });
     
@@ -36,6 +37,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Śródmieście',
       additionDate: '17  lis',
       price: 230000,
+      offerUrl: 'https://olx.pl/oferta/mieszkanie-w-prestizowej-lokalizacji-ul-al-jerozolimskie-CID3-IDi6Fcf.html',
       thumbnailUrl: 'https://olxpl-ring09.akamaized.net/images_tablicapl/439334925_4_261x203_mieszkanie-w-prestizowej-lokalizacji-ul-al-jerozolimskie-nieruchomosci.jpg'
     });
 
@@ -44,6 +46,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Ochota',
       additionDate: '16  lis',
       price: 199000,
+      offerUrl: 'https://otodom.pl/oferta/mieszkanie-18m2-ochota-ul-wislicka-ID355Xe.html',
       thumbnailUrl: 'https://olxpl-ring03.akamaized.net/images_tablicapl/430517783_1_261x203_mieszkanie-18m2-ochota-ul-wislicka-warszawa.jpg'
     });
 
@@ -52,6 +55,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Śródmieście',
       additionDate: '15  lis',
       price: 235000,
+      offerUrl: 'https://olx.pl/oferta/sliczna-kawalerka-w-centrum-ul-spiska-CID3-IDiKtMP.html',
       thumbnailUrl: 'https://olxpl-ring11.akamaized.net/images_tablicapl/453616139_7_261x203_sliczna-kawalerka-w-centrum-ul-spiska-_rev001.jpg'
     });
 
@@ -60,6 +64,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Śródmieście',
       additionDate: '10  lis',
       price: 194000,
+      offerUrl: 'https://otodom.pl/oferta/wykonczone-1-2-pokoje-na-start-lub-inwestycja-ID37uwU.html',
       thumbnailUrl: 'https://olxpl-ring02.akamaized.net/images_tablicapl/451171887_1_261x203_wykonczone-1-2-pokoje-na-start-lub-inwestycja-warszawa.jpg'
     });
 
@@ -68,6 +73,7 @@ describe('fetchListing()', () => {
       location: 'Warszawa, Mokotów',
       additionDate: '26  paź',
       price: 246000,
+      offerUrl: 'https://otodom.pl/oferta/piekne-mieszkanie-warszawa-mokotow-srodmiescie-ID36PFG.html',
       thumbnailUrl: 'https://olxpl-ring09.akamaized.net/images_tablicapl/445158369_1_261x203_piekne-mieszkanie-warszawa-mokotow-srodmiescie-warszawa_rev091.jpg'
     });
   });

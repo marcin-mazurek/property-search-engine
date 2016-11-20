@@ -1,6 +1,7 @@
 import Property from '../../../../src/core/property';
 import { load as parseHtml } from 'cheerio';
 import parseListingPrice from './parse-listing-price';
+import cleanUrl from '../../../../src/core/clean-url';
 
 export default function parsePageResponse(html: string): Property[] {
   const $ = parseHtml(html);
@@ -17,10 +18,11 @@ export default function parsePageResponse(html: string): Property[] {
     }
     
     properties.push({
-      title: offer.find('a strong').text().trim(),
+      title: offer.find('h3 a strong').text().trim(),
       location: offer.find('small span').text().trim(),
       additionDate: offer.find('.color-9.lheight16.marginbott5.x-normal').text().trim(), // TODO: parse date to Date object
       price: parseListingPrice(offer.find(".price").text().trim()),
+      offerUrl: cleanUrl(offer.find('h3 a').attr('href')),
       thumbnailUrl: offer.find('img.fleft').attr('src')
     });
   });
