@@ -5,7 +5,7 @@ import slugify from './slugify';
 
 const basePath = 'https://www.olx.pl/nieruchomosci';
 
-export default function buildUrl(filters: Filters, page = 1) : string {
+export default function buildUrl(filters: Filters, page: number) : string {
   const url = new URLBuilder(basePath);
 
   url.addSegment(TypeMap[filters.type]);
