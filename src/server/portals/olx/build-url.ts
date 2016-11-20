@@ -1,6 +1,6 @@
-import Filters from '../../../../core/filters';
-import { TypeMap, CategoryMap, MarketMap } from '../../../src/portals/olx/filter-maps';
-import URLBuilder from '../../../../core/url-builder';
+import Filters from '../../../core/filters';
+import { TypeMap, CategoryMap, MarketMap } from '../../portals/olx/filter-maps';
+import URLBuilder from '../../../core/url-builder';
 import slugify from './slugify';
 
 const basePath = 'https://www.olx.pl/nieruchomosci';

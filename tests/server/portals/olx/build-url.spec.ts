@@ -1,7 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
-import buildUrl from '../../../src/portals/olx/build-url';
-import Filters, { Type, Category, Market } from '../../../../core/filters';
+import buildUrl from '../../../../src/server/portals/olx/build-url';
+import Filters, { Type, Category, Market } from '../../../../src/core/filters';
 
 const defaultFilters = {
   type: Type.House,

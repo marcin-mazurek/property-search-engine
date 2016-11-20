@@ -1,4 +1,4 @@
-import { Category, Type, Market } from '../../../../core/filters';
+import { Category, Type, Market } from '../../../core/filters';
 
 export const CategoryMap = {
   [Category.Rental]: 'wynajem',
