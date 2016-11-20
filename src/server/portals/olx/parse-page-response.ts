@@ -19,7 +19,7 @@ export default function parsePageResponse(html: string): Property[] {
     properties.push({
       title: offer.find('a strong').text().trim(),
       location: offer.find('small span').text().trim(),
-      additionDate: offer.find('.color-9.lheight16.marginbott5.x-normal').text().trim(), // TODO
+      additionDate: offer.find('.color-9.lheight16.marginbott5.x-normal').text().trim(), // TODO: parse date to Date object
       price: parseListingPrice(offer.find(".price").text().trim()),
       thumbnailUrl: offer.find('img.fleft').attr('src')
     });
