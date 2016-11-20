@@ -10,16 +10,21 @@
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^0.22.0",
-    "node-fetch": "^1.6.3",
-    "typescript": "^2.1.0"
-  },
-  "devDependencies": {
     "@types/chai": "^3.4.34",
+    "@types/cheerio": "^0.17.31",
     "@types/mocha": "^2.2.32",
+    "@types/nock": "^8.2.0",
+    "@types/node-fetch": "^1.6.5",
+    "@types/proxyquire": "^1.3.27",
+    "@types/sinon": "^1.16.32",
     "chai": "^3.5.0",
-    "core-js": "^2.4.1",
+    "cheerio": "^0.22.0",
     "mocha": "^3.1.2",
-    "ts-node": "^1.7.0"
+    "nock": "^9.0.2",
+    "node-fetch": "^1.6.3",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.6",
+    "ts-node": "^1.7.0",
+    "typescript": "^2.1.1"
   }
 }
