@@ -5,7 +5,7 @@ import renderTable from './render-table';
 
 const consolePrompt = require('prompt');
 
-export default function run() {
+export default function runSearch() {
   consolePrompt.start();
   consolePrompt.get(schema, (error, result) => {
     const filters: Filters = {

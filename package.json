@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "mocha --require ts-node/register **/*.spec.ts",
-    "start": "ts-node src/cli/get-offers.ts"
+    "start": "ts-node src/cli/run-search/bin.ts"
   },
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
