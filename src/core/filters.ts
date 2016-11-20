@@ -1,18 +1,18 @@
-export enum Category { Rental, Sale, Exchange }
+export enum Category { Rental = 1, Sale = 2, Exchange = 3 }
 
-export enum Type { Apartment, House, Room }
+export enum Type { Apartment = 1, House = 2, Room = 3 }
 
-export enum Market { Any, Primary, Secondary }
+export enum Market { Primary = 1, Secondary = 2 }
 
 interface Filters {
   category: Category,
   type: Type,
   location: string,
+  market?: Market,
   priceFrom?: number,
   priceTo?: number,
   areaFrom?: number,
   areaTo?: number,
-  market?: Market,
   excludeKeyword?: string
 }
 

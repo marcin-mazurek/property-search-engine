@@ -5,7 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "mocha --require ts-node/register **/*.spec.ts"
+    "test": "mocha --require ts-node/register **/*.spec.ts",
+    "start": "ts-node src/cli/get-offers.ts"
   },
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "mocha": "^3.1.2",
     "nock": "^9.0.2",
     "node-fetch": "^1.6.3",
+    "prompt": "^1.0.0",
     "proxyquire": "^1.7.10",
     "sinon": "^1.17.6",
     "ts-node": "^1.7.0",
