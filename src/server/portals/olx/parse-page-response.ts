@@ -1,11 +1,13 @@
+import SearchResult from '../../../../src/core/search-result';
 import Property from '../../../../src/core/property';
 import { load as parseHtml } from 'cheerio';
 import parseListingPrice from './parse-listing-price';
 import cleanUrl from '../../../../src/core/clean-url';
 
-export default function parsePageResponse(html: string): Property[] {
+export default function parsePageResponse(html: string): SearchResult {
   const $ = parseHtml(html);
   const offers = $('#offers_table td.offer, #offers_table td.recommended-distance-with-ads');
+  const moreResultsAvailable = $('.pager').length > 0;
 
   let properties: Property[] = [];
 
@@ -27,5 +29,6 @@ export default function parsePageResponse(html: string): Property[] {
     });
   });
 
-  return properties;
+
+  return { properties, moreResultsAvailable };
 }

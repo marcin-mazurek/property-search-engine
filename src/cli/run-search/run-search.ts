@@ -20,7 +20,7 @@ export default function runSearch() {
     };
 
     const properties = fetchListing(filters)
-      .then(renderTable)
+      .then(result => renderTable(result.properties))
       .catch(console.error);
   });
 }
