@@ -1,7 +1,7 @@
 interface Property {
   readonly title: string;
   readonly location: string;
-  readonly additionDate: string;
+  readonly added: string;
   readonly price: number;
   readonly thumbnailUrl: string;
   readonly offerUrl: string;
