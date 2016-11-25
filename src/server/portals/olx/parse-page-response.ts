@@ -7,7 +7,7 @@ import cleanUrl from '../../../../src/core/clean-url';
 export default function parsePageResponse(html: string): SearchResult {
   const $ = parseHtml(html);
   const offers = $('#offers_table td.offer, #offers_table td.recommended-distance-with-ads');
-  const moreResultsAvailable = $('.pager').length > 0;
+  const moreResultsAvailable = $('.pager .next').length > 0;
 
   let properties: Property[] = [];
 
