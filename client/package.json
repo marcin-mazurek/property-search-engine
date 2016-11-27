@@ -1,0 +1,29 @@
+{
+  "name": "property-search-engine-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "concurrently \"tsc -p ./src/front-end -w\" \"ts-node ./src/back-end/index.ts\""
+  },
+  "author": "Marcin Mazurek <marcin@mazurek.pro>",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "^2.2.3",
+    "@angular/compiler": "^2.2.3",
+    "@angular/core": "^2.2.3",
+    "@angular/forms": "^2.2.3",
+    "@angular/http": "^2.2.3",
+    "@angular/platform-browser": "^2.2.3",
+    "@angular/platform-browser-dynamic": "^2.2.3",
+    "@angular/router": "^3.2.3",
+    "@types/express": "^4.0.34",
+    "concurrently": "^3.1.0",
+    "express": "^4.14.0",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "^0.19.41",
+    "typescript": "^2.1.0",
+    "zone.js": "^0.6.21"
+  }
+}
