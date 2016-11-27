@@ -1,8 +1,8 @@
-import SearchResult from '../../../../src/core/search-result';
-import Property from '../../../../src/core/property';
+import SearchResult from '../../../../core/src/search-result';
+import Property from '../../../../core/src/property';
 import { load as parseHtml } from 'cheerio';
 import parseListingPrice from './parse-listing-price';
-import cleanUrl from '../../../../src/core/clean-url';
+import cleanUrl from '../../../../core/src/clean-url';
 
 export default function parsePageResponse(html: string): SearchResult {
   const $ = parseHtml(html);
