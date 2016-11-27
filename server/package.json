@@ -1,12 +1,11 @@
 {
-  "name": "property-search-engine",
+  "name": "property-search-engine-server",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "mocha --require ts-node/register **/*.spec.ts",
-    "start": "ts-node src/cli/run-search/bin.ts"
+    "test": "mocha --require ts-node/register **/*.spec.ts"
   },
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
