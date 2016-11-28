@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "mocha --require ts-node/register **/*.spec.ts",
-    "start": "ts-node src/index.ts"
+    "start": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts"
   },
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "mocha": "^3.1.2",
     "nock": "^9.0.2",
     "node-fetch": "^1.6.3",
+    "nodemon": "^1.11.0",
     "prompt": "^1.0.0",
     "proxyquire": "^1.7.10",
     "sinon": "^1.17.6",
