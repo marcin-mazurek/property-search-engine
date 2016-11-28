@@ -6,25 +6,19 @@
     <div class="filter">
       <label for="category">Category:</label>
       <md-button-toggle-group id="category" value="sale">
-        <md-button-toggle value="sale">Sale</md-button-toggle>
-        <md-button-toggle value="rental">Rental</md-button-toggle>
-        <md-button-toggle value="exchange">Exchange</md-button-toggle>
+        <md-button-toggle *ngFor="let option of categoryOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <label for="type">Property type:</label>
       <md-button-toggle-group id="type" value="apartment">
-        <md-button-toggle value="apartment">Apartment</md-button-toggle>
-        <md-button-toggle value="house">House</md-button-toggle>
-        <md-button-toggle value="room">Room</md-button-toggle>
+        <md-button-toggle *ngFor="let option of typeOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <label for="market">Market:</label>
       <md-button-toggle-group id="market" value="">
-        <md-button-toggle value="">Any</md-button-toggle>
-        <md-button-toggle value="house">Primary</md-button-toggle>
-        <md-button-toggle value="room">Secondary</md-button-toggle>
+        <md-button-toggle *ngFor="let option of marketOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
