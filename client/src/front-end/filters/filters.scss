@@ -1,0 +1,27 @@
+.filter {
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
+.text-input {
+  width: 100%;
+}
+
+.text-input-small {
+  width: 150px;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+.actions {
+  margin-top: 30px;
+  text-align: right;
+}
