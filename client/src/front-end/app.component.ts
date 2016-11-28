@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'property-search',
   template: `
-    <h1>Property search engine</h1>
+    <app-layout></app-layout>
   `
 })
 export default class AppComponent { }

@@ -1,0 +1,6 @@
+@import "@angular/material/core/theming/palette.scss";
+@import "@angular/material/core/theming/theming.scss";
+
+body {
+  background: md-color($md-grey, 50);
+}

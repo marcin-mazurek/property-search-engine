@@ -1,0 +1,30 @@
+@import "@angular/material/core/theming/palette.scss";
+@import "@angular/material/core/theming/theming.scss";
+
+.content {
+  padding: 20px;
+  display: flex;
+}
+
+.results {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.results-table {
+  width: 100%;
+  border: none;
+}
+
+.filter:not(:first-child) {
+  margin-top: 20px;
+}
+
+.text-input {
+  width: 100%;
+}
+
+.actions {
+  margin-top: 30px;
+  text-align: right;
+}

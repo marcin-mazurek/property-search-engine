@@ -1,0 +1,63 @@
+<md-toolbar color="primary">Property search tool</md-toolbar>
+<div class="content">
+  <md-card class="filters">
+    <md-card-content>
+      <div class="filter"> 
+        <md-input placeholder="Location" class="text-input"></md-input>
+      </div>
+      <div class="filter">
+        <p>Category:</p>
+        <md-button-toggle-group value="sale" class="toggle-group">
+          <md-button-toggle value="sale">Sale</md-button-toggle>
+          <md-button-toggle value="rental">Rental</md-button-toggle>
+          <md-button-toggle value="exchange">Exchange</md-button-toggle>
+        </md-button-toggle-group>
+      </div>
+      <div class="filter">
+        <p>Property type:</p>
+        <md-button-toggle-group value="apartment" class="toggle-group">
+          <md-button-toggle value="apartment">Apartment</md-button-toggle>
+          <md-button-toggle value="house">House</md-button-toggle>
+          <md-button-toggle value="room">Room</md-button-toggle>
+        </md-button-toggle-group>
+      </div>
+      <div class="filter">
+        <p>Market:</p>
+        <md-button-toggle-group value="" class="toggle-group">
+          <md-button-toggle value="">Any</md-button-toggle>
+          <md-button-toggle value="house">Primary</md-button-toggle>
+          <md-button-toggle value="room">Secondary</md-button-toggle>
+        </md-button-toggle-group>
+      </div>
+      <div class="actions">
+        <button md-raised-button color="primary">Search</button>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md-card class="results">
+    <md-card-content>
+      <table class="mdl-data-table results-table">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Thumbnail</th>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Location</th>
+            <th>Added</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let property of properties">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img src="{{ property.thumbnailUrl }}" alt="" />
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
+            <td>{{ property.added }}</td>
+            <td>{{ property.price }} zł</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-card-content>
+  </md-card>
+</div>
