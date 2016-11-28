@@ -8,7 +8,7 @@
     "lib": [ "es2015", "dom" ],
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "../../public/js"
+    "outDir": "../../public/compiled"
   },
   "exclude": [
     "node_modules/*"

@@ -2,5 +2,4 @@
 node_modules
 .DS_Store
 npm-debug.log
-client/public/js/*
-client/public/css/*
+client/public/compiled/*
