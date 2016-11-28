@@ -6,8 +6,10 @@
   "scripts": {
     "start": "concurrently \"npm run serve\" \"npm run watch:ts\" \"npm run watch:scss\"",
     "serve": "ts-node ./src/back-end/index.ts",
+    "build:ts": "tsc -p ./src/front-end",
     "watch:ts": "tsc -p ./src/front-end -w",
-    "watch:scss": "node-sass -o ./public/compiled -w --include-path ./node_modules ./src/front-end"
+    "build:scss": "node-sass -o ./public/compiled -w --include-path ./node_modules ./src/front-end",
+    "watch:scss": "node-sass -o ./public/compiled --include-path ./node_modules ./src/front-end && node-sass -o ./public/compiled -w --include-path ./node_modules ./src/front-end"
   },
   "author": "Marcin Mazurek <marcin@mazurek.pro>",
   "license": "ISC",
