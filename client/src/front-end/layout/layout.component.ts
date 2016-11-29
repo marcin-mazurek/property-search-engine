@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   moduleId: module.id,
   selector: 'app-layout',
   templateUrl: 'layout.component.html',
-  styleUrls: ['layout.css']
+  styleUrls: ['layout.component.scss']
 })
 export default class LayoutComponent implements OnInit {
   properties: any[];

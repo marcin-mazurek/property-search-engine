@@ -5,7 +5,7 @@ import Filters, { Category, Type, Market } from '../../../../core/src/filters';
   moduleId: module.id,
   selector: 'app-filters',
   templateUrl: 'filters.component.html',
-  styleUrls: ['filters.css']
+  styleUrls: ['filters.component.scss']
 })
 export default class FiltersComponent {
   model: Filters;
