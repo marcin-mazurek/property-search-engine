@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import Filters, { Category, Type, Market } from '../../../../core/src/filters';
 
 @Component({
@@ -7,6 +7,13 @@ import Filters, { Category, Type, Market } from '../../../../core/src/filters';
   styleUrls: ['filters.component.scss']
 })
 export default class FiltersComponent {
+  @Output()
+  submit = new EventEmitter<Filters>();
+
+  onSubmit() {
+    this.submit.emit(this.model);
+  }
+
   model: Filters = {
     category: Category.Sale,
     type: Type.Apartment,
@@ -32,8 +39,4 @@ export default class FiltersComponent {
     { label: 'Primary', value: Market.Primary },
     { label: 'Secondary', value: Market.Secondary }
   ];
-
-  onSubmit() {
-    console.log(this.model);
-  }
 }

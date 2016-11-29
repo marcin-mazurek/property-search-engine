@@ -1,6 +1,6 @@
 <md-toolbar color="primary" class="toolbar">Property search tool</md-toolbar>
 <div class="content">
-  <app-filters class="section"></app-filters>
+  <app-filters class="section" (submit)="onSubmit($event)"></app-filters>
   <md-card class="section results">
     <md-card-content>
       <table class="mdl-data-table results-table">
@@ -13,8 +13,8 @@
             <th>Price</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let property of properties">
+        <tbody *ngIf="result">
+          <tr *ngFor="let property of result.properties | async">
             <td class="mdl-data-table__cell--non-numeric">
               <img src="{{ property.thumbnailUrl }}" alt="" />
             </td>

@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule} from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import AppComponent from './app.component';
 import FiltersComponent from './filters/filters.component';
-import LayoutComponent from './layout/layout.component';
+import SearchComponent from './search/search.component';
+import SearchService from './search/search.service';
 
 @NgModule({
-  imports:      [BrowserModule, FormsModule, MaterialModule.forRoot()],
-  declarations: [AppComponent, FiltersComponent, LayoutComponent],
-  bootstrap:    [AppComponent]
+  imports:      [BrowserModule, FormsModule, HttpModule, MaterialModule.forRoot()],
+  declarations: [AppComponent, FiltersComponent, SearchComponent],
+  bootstrap:    [AppComponent],
+  providers:    [SearchService]
 })
 export class AppModule { }

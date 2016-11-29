@@ -1,34 +1,18 @@
 import Filters, { Category, Market, Type } from '../../../../core/src/filters';
 
-const categoryMap = {
-  rental: Category.Rental,
-  sale: Category.Sale,
-  exchange: Category.Exchange
-};
-
-const typeMap = {
-  apartment: Type.Apartment,
-  house: Type.House,
-  Room: Type.Room
-};
-
-const marketMap = {
-  primary: Market.Primary,
-  secondary: Market.Secondary
-};
-
 export default function buildFilters(params: any): Filters {
-  const category = categoryMap[params.category];
+  const category = <Category>params.category;
+
   if (!category) {
     throw new Error('Invalid category param');
   }
 
-  const type = typeMap[params.type];
+  const type = <Type>params.type;
   if (!type) {
     throw new Error('Invalid type param');
   }
 
-  const market = marketMap[params.market] || null;
+  const market = <Market>params.market || null;
 
   return {
     category: category,
