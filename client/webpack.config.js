@@ -1,19 +1,16 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/front-end/main.ts',
-
   resolve: {
     extensions: ['', '.ts', '.js']
   },
-
   output: {
     path: 'public/js',
     filename: 'app.js'
   },
-
+  devtool: 'eval-source-map',
   module: {
     loaders: [
       {
@@ -37,11 +34,5 @@ module.exports = {
         loader: 'raw!sass'
       }
     ]
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    })
-  ]
+  }
 };
