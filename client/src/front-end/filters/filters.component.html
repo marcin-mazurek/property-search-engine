@@ -1,47 +1,47 @@
 <md-card>
-  <md-card-content>
+  <md-card-content class="filters">
     <div class="filter"> 
-      <md-input placeholder="Location" class="text-input"></md-input>
+      <md-input placeholder="Location" class="text-input" [(ngModel)]="model.location"></md-input>
     </div>
     <div class="filter">
       <label for="category">Category:</label>
-      <md-button-toggle-group id="category" value="sale">
+      <md-button-toggle-group id="category" [(ngModel)]="model.category">
         <md-button-toggle *ngFor="let option of categoryOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <label for="type">Property type:</label>
-      <md-button-toggle-group id="type" value="apartment">
+      <md-button-toggle-group id="type" [(ngModel)]="model.type">
         <md-button-toggle *ngFor="let option of typeOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <label for="market">Market:</label>
-      <md-button-toggle-group id="market" value="">
+      <md-button-toggle-group id="market" [(ngModel)]="model.market">
         <md-button-toggle *ngFor="let option of marketOptions" [value]="option.value">{{ option.label }}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
-      <md-input placeholder="Price from" align="end" class="text-input-small">
-        <span md-suffix>000&nbsp;zł</span>
+      <md-input placeholder="Price from" align="end" class="text-input-small" [(ngModel)]="model.priceFrom">
+        <span md-suffix>&nbsp;000&nbsp;zł</span>
       </md-input>
-      <md-input placeholder="Price to" align="end" class="text-input-small">
-        <span md-suffix>000&nbsp;zł</span>
+      <md-input placeholder="Price to" align="end" class="text-input-small" [(ngModel)]="model.priceTo">
+        <span md-suffix>&nbsp;000&nbsp;zł</span>
       </md-input>
     </div>
     <div class="filter">
-      <md-input placeholder="Area from" align="end" class="text-input-small">
+      <md-input placeholder="Area from" align="end" class="text-input-small" [(ngModel)]="model.areaFrom">
         <span md-suffix>&nbsp;m²</span>
       </md-input>
-      <md-input placeholder="Area to" align="end" class="text-input-small">
+      <md-input placeholder="Area to" align="end" class="text-input-small" [(ngModel)]="model.areaTo">
         <span md-suffix>&nbsp;m²</span>
       </md-input>
     </div>
     <div class="filter"> 
-      <md-input placeholder="Exclude keyword (separated by comma)" value="tbs" class="text-input"></md-input>
+      <md-input placeholder="Exclude keywords (separated by comma)" class="text-input" [(ngModel)]="model.excludeKeyword"></md-input>
     </div>
     <div class="actions">
-      <button md-raised-button color="primary">Search</button>
+      <button md-raised-button color="primary" (click)="onSubmit()">Search</button>
     </div>
   </md-card-content>
 </md-card>
