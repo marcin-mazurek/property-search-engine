@@ -1,18 +1,31 @@
-@import "../../../node_modules/@angular/material/core/theming/palette.scss";
-@import "../../../node_modules/@angular/material/core/theming/theming.scss";
+@import "../../../node_modules/@angular/material/core/theming/palette";
+@import "../../../node_modules/@angular/material/core/theming/theming";
+@import "../styles/variables";
 
 .content {
-  padding: 20px;
+  padding: 15px;
   display: flex;
   align-items: flex-start;
+
+  @media (max-width: $breakpoint) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section {
+    margin: 15px;
+  }
 }
 
 .results {
   flex: 1;
-  margin-left: 20px;
 }
 
 .results-table {
   width: 100%;
   border: none;
+}
+
+.toolbar {
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
 }

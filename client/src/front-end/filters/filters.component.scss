@@ -1,4 +1,19 @@
+@import "../styles/variables";
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: $breakpoint + 1) {
+    flex-direction: column;
+  }
+}
+
 .filter {
+  @media (max-width: $breakpoint) {
+    margin: 0 15px;
+  }
+
   &:not(:first-child) {
     margin-top: 20px;
   }
