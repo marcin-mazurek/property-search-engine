@@ -5,22 +5,22 @@ import { Observable } from 'rxjs';
 import Filters from '../../../../core/src/filters';
 import SearchResult from '../../../../core/src/search-result';
 
+import 'rxjs/add/operator/toPromise';
+
 @Injectable()
 export default class SearchService {
   private url = 'http://localhost:3001/search';
 
   constructor(private http: Http) { }
 
-  search(filters: Filters): Observable<SearchResult> {
-    const params = new URLSearchParams();
+  search(filters: Filters, page: number = 1): Promise<SearchResult> {
+    const search = new URLSearchParams();
     Object.keys(filters)
-      .forEach(key => params.append(key, filters[key]));
+      .forEach(key => search.append(key, filters[key]));
+    search.append('page', page.toString());
 
-    return this.http.get(this.url, { search: params })
-      .map(response => response.json().data as SearchResult)
-      .catch((e: any) => {
-        console.error(e);
-        return Observable.of<SearchResult>({ properties: [], moreResultsAvailable: false });
-      });
+    return this.http.get(this.url, { search })
+      .toPromise()
+      .then(response => response.json() as SearchResult);
   }
 }

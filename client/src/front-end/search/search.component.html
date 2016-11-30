@@ -3,28 +3,36 @@
   <app-filters class="section" (submit)="onSubmit($event)"></app-filters>
   <md-card class="section results">
     <md-card-content>
-      <table class="mdl-data-table results-table">
-        <thead>
-          <tr>
-            <th class="mdl-data-table__cell--non-numeric">Thumbnail</th>
-            <th class="mdl-data-table__cell--non-numeric">Name</th>
-            <th class="mdl-data-table__cell--non-numeric">Location</th>
-            <th>Added</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="result">
-          <tr *ngFor="let property of result.properties | async">
-            <td class="mdl-data-table__cell--non-numeric">
-              <img src="{{ property.thumbnailUrl }}" alt="" />
-            </td>
-            <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
-            <td>{{ property.added }}</td>
-            <td>{{ property.price }} zł</td>
-          </tr>
-        </tbody>
-      </table>
+      <div *ngIf="result && !loading">
+        <table class="mdl-data-table results-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Thumbnail</th>
+              <th class="mdl-data-table__cell--non-numeric">Name</th>
+              <th class="mdl-data-table__cell--non-numeric">Location</th>
+              <th>Added</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let property of result.properties" class="result-row" (click)="navigate(property.offerUrl)">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img src="{{ property.thumbnailUrl }}" alt="" *ngIf="property.thumbnailUrl" />
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
+              <td>{{ property.added }}</td>
+              <td>{{ property.price }}&nbsp;zł</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="!result && !loading" class="no-results-yet">
+        <md-icon>info</md-icon> Begin your search using filters on the left.
+      </div>
+      <div *ngIf="loading" class="loading">
+        <md-spinner mode="indeterminate"></md-spinner>
+      </div>
     </md-card-content>
   </md-card>
 </div>

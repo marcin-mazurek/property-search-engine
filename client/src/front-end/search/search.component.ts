@@ -10,11 +10,19 @@ import SearchService from './search.service';
   styleUrls: ['search.component.scss']
 })
 export default class SearchComponent {
-  result: Observable<SearchResult>;
+  result: SearchResult;
+
+  loading: boolean = false;
 
   constructor(private searchService: SearchService) { }
 
-  onSubmit(properties: any) {
-    this.result = this.searchService.search(properties);
+  async onSubmit(filters: any): Promise<void> {
+    this.loading = true;
+    this.result = await this.searchService.search(filters);
+    this.loading = false;
+  }
+
+  navigate(offerUrl: string): void {
+    window.open(offerUrl);
   }
 }

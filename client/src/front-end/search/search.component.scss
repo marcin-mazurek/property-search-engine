@@ -24,6 +24,28 @@
 .results-table {
   width: 100%;
   border: none;
+  white-space: normal;
+  font-size: 14px;
+}
+
+.result-row {
+  cursor: pointer;
+}
+
+.no-results-yet {
+  display: flex;
+  align-items: center;
+
+  md-icon {
+    margin-right: 15px;
+    color: md-color($md-blue, 400);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 150px 0;
 }
 
 .toolbar {
