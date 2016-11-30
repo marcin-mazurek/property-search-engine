@@ -16,6 +16,8 @@ export default class SearchComponent {
 
   constructor(private searchService: SearchService) { }
 
+  page: number = 1;
+
   async onSubmit(filters: any): Promise<void> {
     this.loading = true;
     this.result = await this.searchService.search(filters);
@@ -24,5 +26,9 @@ export default class SearchComponent {
 
   navigate(offerUrl: string): void {
     window.open(offerUrl);
+  }
+
+  goToPage(page: number): void {
+    this.page = page;
   }
 }

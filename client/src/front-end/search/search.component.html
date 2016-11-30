@@ -25,6 +25,10 @@
               <td>{{ property.price }}&nbsp;zł</td>
             </tr>
           </tbody>
+          <div class="pagination">
+            <button md-mini-fab class="previous-page" (click)="goToPage(page - 1)"><md-icon>chevron_left</md-icon></button>
+            <button md-mini-fab class="next-page" (click)="goToPage(page + 1)"><md-icon>chevron_right</md-icon></button>
+          </div>
         </table>
       </div>
       <div *ngIf="!result && !loading" class="no-results-yet">
