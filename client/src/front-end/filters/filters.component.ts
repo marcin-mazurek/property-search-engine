@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import Filters, { Category, Type, Market } from '../../../../core/src/filters';
 
 @Component({
@@ -14,13 +14,8 @@ export default class FiltersComponent {
     this.submit.emit(this.model);
   }
 
-  model: Filters = {
-    category: Category.Sale,
-    type: Type.Apartment,
-    market: null,
-    location: 'Warszawa',
-    excludeKeyword: 'tbs'
-  };
+  @Input('filters')
+  model: Filters;
 
   categoryOptions = [
     { label: 'Sale', value: Category.Sale },

@@ -1,35 +1,10 @@
 <md-toolbar color="primary" class="toolbar">Property search tool</md-toolbar>
 <div class="content">
-  <app-filters class="section" (submit)="onSubmit($event)"></app-filters>
+  <app-filters class="section" [filters]="filters" (submit)="onSearchSubmit($event)"></app-filters>
   <md-card class="section results">
     <md-card-content>
       <div *ngIf="result && !loading">
-        <table class="mdl-data-table results-table">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Thumbnail</th>
-              <th class="mdl-data-table__cell--non-numeric">Name</th>
-              <th class="mdl-data-table__cell--non-numeric">Location</th>
-              <th>Added</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let property of result.properties" class="result-row" (click)="navigate(property.offerUrl)">
-              <td class="mdl-data-table__cell--non-numeric">
-                <img src="{{ property.thumbnailUrl }}" alt="" *ngIf="property.thumbnailUrl" />
-              </td>
-              <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
-              <td>{{ property.added }}</td>
-              <td>{{ property.price }}&nbsp;zł</td>
-            </tr>
-          </tbody>
-          <div class="pagination">
-            <button md-mini-fab class="previous-page" (click)="goToPage(page - 1)"><md-icon>chevron_left</md-icon></button>
-            <button md-mini-fab class="next-page" (click)="goToPage(page + 1)"><md-icon>chevron_right</md-icon></button>
-          </div>
-        </table>
+        <app-search-result-table [result]="result" [page]="page" (pageChange)="onPageChange($event)"></app-search-result-table>
       </div>
       <div *ngIf="!result && !loading" class="no-results-yet">
         <md-icon>info</md-icon> Begin your search using filters on the left.

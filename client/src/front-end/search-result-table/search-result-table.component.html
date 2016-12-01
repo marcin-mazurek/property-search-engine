@@ -1,0 +1,26 @@
+<table class="mdl-data-table table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Thumbnail</th>
+      <th class="mdl-data-table__cell--non-numeric">Name</th>
+      <th class="mdl-data-table__cell--non-numeric">Location</th>
+      <th>Added</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let property of result.properties" class="row" (click)="navigate(property.offerUrl)">
+      <td class="mdl-data-table__cell--non-numeric">
+        <img src="{{ property.thumbnailUrl }}" alt="" *ngIf="property.thumbnailUrl" />
+      </td>
+      <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
+      <td>{{ property.added }}</td>
+      <td>{{ property.price }}&nbsp;zł</td>
+    </tr>
+  </tbody>
+</table>
+<div class="pagination">
+  <button md-mini-fab class="previous-page" (click)="onPageChange(page - 1)" *ngIf="page > 1"><md-icon>chevron_left</md-icon></button>
+  <button md-mini-fab class="next-page" (click)="onPageChange(page + 1)" *ngIf="result.moreResultsAvailable"><md-icon>chevron_right</md-icon></button>
+</div>

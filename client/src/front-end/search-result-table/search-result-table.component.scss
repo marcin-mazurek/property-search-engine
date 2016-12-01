@@ -1,0 +1,24 @@
+.table {
+  width: 100%;
+  border: none;
+  white-space: normal;
+  font-size: 14px;
+}
+
+.row {
+  cursor: pointer;
+}
+
+.pagination {
+  margin: 30px 0 15px 0;
+}
+
+.next-page {
+  float: right;
+}
+
+.previous-page, .next-page {
+  md-icon {
+    color: white;
+  }
+}

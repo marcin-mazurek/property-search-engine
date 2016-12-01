@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import Filters, { Category, Type } from '../../../../core/src/filters';
 import SearchResult from '../../../../core/src/search-result';
 import SearchService from './search.service';
 
