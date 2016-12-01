@@ -15,21 +15,30 @@ export default class SearchComponent {
 
   loading: boolean = false;
 
+  filters: Filters = {
+    category: Category.Sale,
+    type: Type.Apartment,
+    location: 'Warszawa',
+    excludeKeyword: 'tbs'
+  };
+
   constructor(private searchService: SearchService) { }
 
   page: number = 1;
 
-  async onSubmit(filters: any): Promise<void> {
-    this.loading = true;
-    this.result = await this.searchService.search(filters);
-    this.loading = false;
+  async onSearchSubmit(filters: Filters): Promise<void> {
+    this.filters = filters;
+    this.fetchResults();
   }
 
-  navigate(offerUrl: string): void {
-    window.open(offerUrl);
-  }
-
-  goToPage(page: number): void {
+  async onPageChange(page: number): Promise<void> {
     this.page = page;
+    this.fetchResults();
+  }
+
+  async fetchResults() {
+    this.loading = true;
+    this.result = await this.searchService.search(this.filters, this.page);
+    this.loading = false;
   }
 }

@@ -13,7 +13,7 @@ export default class SearchService {
 
   constructor(private http: Http) { }
 
-  search(filters: Filters, page: number = 1): Promise<SearchResult> {
+  search(filters: Filters, page: number): Promise<SearchResult> {
     const search = new URLSearchParams();
     Object.keys(filters)
       .forEach(key => search.append(key, filters[key]));
