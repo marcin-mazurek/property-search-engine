@@ -14,10 +14,10 @@ export default function buildUrl(filters: Filters, page: number) : string {
   url.addQueryStringPart('page', page.toString());
 
   if (filters.priceFrom) {
-    url.addQueryStringPart('search[filter_float_price:from]', filters.priceFrom.toString());
+    url.addQueryStringPart('search[filter_float_price:from]', (filters.priceFrom * 1000).toString());
   }
   if (filters.priceTo) {
-    url.addQueryStringPart('search[filter_float_price:to]', filters.priceTo.toString());
+    url.addQueryStringPart('search[filter_float_price:to]', (filters.priceTo * 1000).toString());
   }
   if (filters.areaFrom) {
     url.addQueryStringPart('search[filter_float_m:from]', filters.areaFrom.toString());
