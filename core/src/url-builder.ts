@@ -14,6 +14,12 @@ export default class URLBuilder {
     this.queryStringParts.push(key + '=' + value);
   }
 
+  addQueryStringParts(parts: any) {
+    Object.keys(parts).forEach(key => {
+      this.addQueryStringPart(key, parts[key]);
+    });
+  }
+
   build() : string {
     if (this.queryStringParts.length) {
       return this.url + '?' + this.queryStringParts.join('&');
