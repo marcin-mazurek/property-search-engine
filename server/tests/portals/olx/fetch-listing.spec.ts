@@ -1,8 +1,8 @@
-import Filters, { Category, Type } from '../../../../src/core/filters';
+import Filters, { Category, Type } from '../../../../core/src/filters';
 import * as nock from 'nock';
 import { parse } from 'url';
-import buildUrl from '../../../../src/server/portals/olx/build-url';
-import fetchListing from '../../../../src/server/portals/olx/fetch-listing';
+import buildUrl from '../../../../server/src/portals/olx/build-url';
+import fetchListing from '../../../../server/src/portals/olx/fetch-listing';
 import olxSinglePageResponse from '../../_fixtures/olx-single-page';
 import olxMultiPageResponse from '../../_fixtures/olx-multi-page';
 import { expect } from 'chai';
