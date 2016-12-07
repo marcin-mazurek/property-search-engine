@@ -11,11 +11,11 @@ export default class FiltersComponent {
   submit = new EventEmitter<Filters>();
 
   onSubmit() {
-    this.submit.emit(this.model);
+    this.submit.emit(this.filters);
   }
 
-  @Input('filters')
-  model: Filters;
+  @Input()
+  filters: Filters;
 
   categoryOptions = [
     { label: 'Sale', value: Category.Sale },
