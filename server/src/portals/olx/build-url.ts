@@ -1,7 +1,8 @@
 import Filters from '../../../../core/src/filters';
-import { TypeMap, CategoryMap, MarketMap } from '../../portals/olx/filter-maps';
+import { TypeMap, CategoryMap, MarketMap } from '../../portals/shared/olx-otodom-filter-maps';
 import URLBuilder from '../../../../core/src/url-builder';
 import slugify from './slugify';
+import buildOlxOtodomQueryString from '../shared/build-olx-otodom-query-string';
 
 const basePath = 'https://www.olx.pl/nieruchomosci';
 
@@ -12,22 +13,7 @@ export default function buildUrl(filters: Filters, page: number) : string {
   url.addSegment(CategoryMap[filters.category]);
   url.addSegment(slugify(filters.location));
   url.addQueryStringPart('page', page.toString());
-
-  if (filters.priceFrom) {
-    url.addQueryStringPart('search[filter_float_price:from]', (filters.priceFrom * 1000).toString());
-  }
-  if (filters.priceTo) {
-    url.addQueryStringPart('search[filter_float_price:to]', (filters.priceTo * 1000).toString());
-  }
-  if (filters.areaFrom) {
-    url.addQueryStringPart('search[filter_float_m:from]', filters.areaFrom.toString());
-  }
-  if (filters.areaTo) {
-    url.addQueryStringPart('search[filter_float_m:to]', filters.areaTo.toString());
-  }
-  if (filters.market) {
-    url.addQueryStringPart('[filter_enum_market][0]', MarketMap[filters.market]);
-  }
+  url.addQueryStringParts(buildOlxOtodomQueryString(filters));
 
   return url.build();
 }
