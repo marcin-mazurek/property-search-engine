@@ -61,7 +61,7 @@ describe('buildUrl()', () => {
 
   it('builds a URL with a "price from" parameter if specified', () => {
     const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ priceFrom: 80000 }), 1
+      mergeFilterOptionsWithDefaults({ priceFrom: 80 }), 1
     );
     const searchParams = getSearchParamsFromURL(url);
     expect(searchParams).to.contain('search[filter_float_price:from]=80000');
@@ -74,7 +74,7 @@ describe('buildUrl()', () => {
   
   it('builds a URL with a "price to" parameter if specified', () => {
     const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ priceTo: 150000 }), 1
+      mergeFilterOptionsWithDefaults({ priceTo: 150 }), 1
     );
     const searchParams = getSearchParamsFromURL(url);
     expect(searchParams).to.contain('search[filter_float_price:to]=150000');
