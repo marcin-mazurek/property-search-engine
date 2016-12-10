@@ -15,7 +15,7 @@ function mergeFilterOptionsWithDefaults(options): any {
   return Object.assign({}, defaultFilters, options);
 }
 
-describe('buildUrl()', () => {
+describe('buildUrl() for OLX', () => {
   it('builds a URL containing the OLX host', () => {
     const url = buildUrl(defaultFilters, 1);
     expect(url).to.contain('https://www.olx.pl/nieruchomosci/');

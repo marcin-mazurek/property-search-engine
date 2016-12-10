@@ -15,7 +15,7 @@ const filters: Filters = {
 
 const url = parse(buildUrl(filters, 1));
 
-describe('fetchListing()', () => {
+describe('fetchListing() for OLX', () => {
   context('one page result', () => {
     beforeEach(() => {
       nock(url.protocol + '//' + url.host)

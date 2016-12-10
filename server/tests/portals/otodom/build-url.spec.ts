@@ -15,7 +15,7 @@ function mergeFilterOptionsWithDefaults(options): any {
   return Object.assign({}, defaultFilters, options);
 }
 
-describe('buildUrl()', () => {
+describe('buildUrl() for Otodom', () => {
   it('builds a URL containing the Otodom host', () => {
     const url = buildUrl(defaultFilters, 1);
     expect(url).to.contain('https://otodom.pl/');
