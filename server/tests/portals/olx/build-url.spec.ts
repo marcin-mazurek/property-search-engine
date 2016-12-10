@@ -2,6 +2,8 @@ import 'mocha';
 import { expect } from 'chai';
 import buildUrl from '../../../src/portals/olx/build-url';
 import Filters, { Type, Category, Market } from '../../../../core/src/filters';
+import buildOlxOtodomQueryString from '../../../src/portals/shared/build-olx-otodom-query-string';
+import { getQueryStringFromUrl, getURLSegments } from '../../_helpers/url';
 
 const defaultFilters = {
   type: Type.House,
@@ -9,16 +11,8 @@ const defaultFilters = {
   location: 'Kraków'
 };
 
-function mergeFilterOptionsWithDefaults(options) {
+function mergeFilterOptionsWithDefaults(options): any {
   return Object.assign({}, defaultFilters, options);
-}
-
-function getSearchParamsFromURL(url) {
-  return url.split('?')[1].split('&');
-}
-
-function getURLSegments(url) {
-  return url.split('?')[0].split('/').slice(3);
 }
 
 describe('buildUrl()', () => {
