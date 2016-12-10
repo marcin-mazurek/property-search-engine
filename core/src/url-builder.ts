@@ -14,9 +14,9 @@ export default class URLBuilder {
     this.queryStringParts.push(key + '=' + value);
   }
 
-  addQueryStringParts(parts: any) {
-    Object.keys(parts).forEach(key => {
-      this.addQueryStringPart(key, parts[key]);
+  addQueryStringParts(parts: Map<string, string>) {
+    parts.forEach((value, key) => {
+      this.addQueryStringPart(key, value);
     });
   }
 

@@ -59,74 +59,14 @@ describe('buildUrl()', () => {
     expect(segments[3]).to.equal('siemianowice-slaskie');
   });
 
-  it('builds a URL with a "price from" parameter if specified', () => {
-    const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ priceFrom: 80 }), 1
+  it('builds a URL with filter search params', () => {
+    const queryString = getQueryStringFromUrl(
+      buildUrl(defaultFilters, 2)
     );
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('search[filter_float_price:from]=80000');
-  });
+    const expectedQueryStringParams = buildOlxOtodomQueryString(defaultFilters, 2);
 
-  it('builds a URL without "price from" parameter if not specified', () => {
-    const url = buildUrl(defaultFilters, 1);
-    expect(url).not.to.contain('search[filter_float_price:from]');
-  });
-  
-  it('builds a URL with a "price to" parameter if specified', () => {
-    const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ priceTo: 150 }), 1
-    );
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('search[filter_float_price:to]=150000');
-  });
-
-  it('builds a URL without "price to" parameter if not specified', () => {
-    const url = buildUrl(defaultFilters, 1);
-    expect(url).not.to.contain('search[filter_float_price:to]');
-  });
-
-  it('builds a URL with a "area from" parameter if specified', () => {
-    const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ areaFrom: 20 }), 1
-    );
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('search[filter_float_m:from]=20');
-  });
-
-  it('builds a URL without "area from" parameter if not specified', () => {
-    const url = buildUrl(defaultFilters, 1);
-    expect(url).not.to.contain('search[filter_float_m:from]');
-  });
-
-  it('builds a URL with a "area to" parameter if specified', () => {
-    const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ areaTo: 20 }), 1
-    );
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('search[filter_float_m:to]=20');
-  });
-
-  it('builds a URL without "area to" parameter if not specified', () => {
-    const url = buildUrl(defaultFilters, 1);
-    expect(url).not.to.contain('search[filter_float_m:to]');
-  });
-
-  it('builds a URL with given market type if specified', () => {
-    const url = buildUrl(
-      mergeFilterOptionsWithDefaults({ market: Market.Secondary }), 1
-    );
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('[filter_enum_market][0]=secondary');
-  });
-
-  it('builds a URL without market parameter if not specified', () => {
-    const url = buildUrl(defaultFilters, 1);
-    expect(url).not.to.contain('search[filter_enum_market]');
-  });
-
-  it('builds a URL with page param', () => {
-    const url = buildUrl(defaultFilters, 2);
-    const searchParams = getSearchParamsFromURL(url);
-    expect(searchParams).to.contain('page=2');
+    expectedQueryStringParams.forEach((value, key) => {
+      expect(queryString).to.contain(`${key}=${value}`);
+    });
   });
 });
