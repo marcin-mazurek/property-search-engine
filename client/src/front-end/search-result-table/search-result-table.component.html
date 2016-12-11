@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let property of result.properties" class="row" (click)="navigate(property.offerUrl)">
-      <td class="mdl-data-table__cell--non-numeric">
+      <td class="mdl-data-table__cell--non-numeric thumbnail">
         <img src="{{ property.thumbnailUrl }}" alt="" *ngIf="property.thumbnailUrl" />
       </td>
       <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
