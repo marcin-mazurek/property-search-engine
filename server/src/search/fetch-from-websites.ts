@@ -1,8 +1,8 @@
 import Filters from '../../../core/src/filters';
 import SinglePageSearchResult from '../../../core/src/single-page-search-result';
-
 import Property from '../../../core/src/property';
 import SearchResult from '../../../core/src/search-result';
+import removeDuplicates from './remove-duplicates';
 import { fetchFunctions, resultsLimit } from '../config';
 
 export default async function fetchFromWebsites(filters: Filters): Promise<SearchResult> {
@@ -27,5 +27,8 @@ export default async function fetchFromWebsites(filters: Filters): Promise<Searc
     }
   }
 
-  return { properties, resultTrimmed };
+  return {
+    properties: removeDuplicates(properties),
+    resultTrimmed
+  };
 }
