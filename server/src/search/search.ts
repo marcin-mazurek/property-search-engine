@@ -3,6 +3,8 @@ import Property from '../../../core/src/property';
 import SearchResult from '../../../core/src/search-result';
 import PaginatedSearchResult from '../../../core/src/paginated-search-result';
 import fetchFromWebsites from './fetch-from-websites';
+import sortResult from './sort-result';
+import paginateResult from './paginate-result';
 import { resultsPerPage } from '../config';
 
 // TODO: replace with Redis cache
@@ -19,10 +21,8 @@ export default async function search(filters: Filters, page: number): Promise<Pa
     cache[cacheKey] = result;
   }
 
-  const paginatedProperties = result.properties.slice((page - 1) * resultsPerPage, page * resultsPerPage);
-
   return {
-    properties: paginatedProperties,
+    properties: paginateResult(sortResult(result.properties, 'price'), page),
     resultTrimmed: result.resultTrimmed,
     totalPages: Math.ceil(result.properties.length / resultsPerPage)
   };
