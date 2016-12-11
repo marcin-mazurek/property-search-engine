@@ -3,10 +3,16 @@
   <app-filters class="section" [filters]="filters" (submit)="onSearchSubmit($event)"></app-filters>
   <md-card class="section results">
     <md-card-content>
+      <div *ngIf="!loading && result && result.resultTrimmed" class="warning">
+        <md-icon>warning</md-icon> There are more than 1000 properties available. Please make your search more specific.
+      </div>
+      <div *ngIf="!loading && error" class="error">
+        <md-icon>warning</md-icon> An error occured.
+      </div>
       <div *ngIf="result && !loading">
         <app-search-result-table [result]="result" [page]="page" (pageChange)="onPageChange($event)"></app-search-result-table>
       </div>
-      <div *ngIf="!result && !loading" class="no-results-yet">
+      <div *ngIf="!result && !loading" class="info">
         <md-icon>info</md-icon> Begin your search using filters on the left.
       </div>
       <div *ngIf="loading" class="loading">

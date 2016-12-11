@@ -38,7 +38,15 @@ export default class SearchComponent {
 
   async fetchResults() {
     this.loading = true;
-    this.result = await this.searchService.search(this.filters, this.page);
-    this.loading = false;
+    this.error = false;
+
+    try {
+      this.result = await this.searchService.search(this.filters, this.page);
+    } catch (e) {
+      this.result = undefined;
+      this.error = true;
+    } finally {
+      this.loading = false;
+    }
   }
 }

@@ -21,13 +21,33 @@
   flex: 1;
 }
 
-.no-results-yet {
+.info, .warning, .error {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 
   md-icon {
     margin-right: 15px;
+  }
+}
+
+.info {
+  md-icon {
     color: md-color($md-blue, 400);
+  }
+}
+
+.warning {
+  md-icon {
+    color: md-color($md-yellow, 700);
+  }
+}
+
+.error {
+  color: md-color($md-red, 400);
+
+  md-icon {
+    color: md-color($md-red, 400);
   }
 }
 
