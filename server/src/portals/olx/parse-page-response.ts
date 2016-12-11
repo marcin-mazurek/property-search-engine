@@ -1,10 +1,10 @@
-import SearchResult from '../../../../core/src/search-result';
+import SinglePageSearchResult from '../../../../core/src/single-page-search-result';
 import Property from '../../../../core/src/property';
 import { load as parseHtml } from 'cheerio';
 import parseListingPrice from '../shared/parse-listing-price';
 import cleanUrl from '../../../../core/src/clean-url';
 
-export default function parsePageResponse(html: string): SearchResult {
+export default function parsePageResponse(html: string): SinglePageSearchResult {
   const $ = parseHtml(html);
   const offers = $('#offers_table td.offer, #offers_table td.recommended-distance-with-ads');
   const moreResultsAvailable = $('.pager .next').length > 0;

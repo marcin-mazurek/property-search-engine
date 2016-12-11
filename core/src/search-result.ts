@@ -1,8 +1,8 @@
 import Property from './property';
 
-interface SearchResult {
+interface FetchResult {
   properties: Property[];
-  moreResultsAvailable: boolean;
+  resultTrimmed: boolean;
 }
 
-export default SearchResult;
+export default FetchResult;

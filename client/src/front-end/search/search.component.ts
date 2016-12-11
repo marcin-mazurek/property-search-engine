@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import Filters, { Category, Type } from '../../../../core/src/filters';
-import SearchResult from '../../../../core/src/search-result';
+import PaginatedSearchResult from '../../../../core/src/paginated-search-result';
 import SearchService from './search.service';
 
 @Component({
@@ -11,9 +11,11 @@ import SearchService from './search.service';
   styleUrls: ['search.component.scss']
 })
 export default class SearchComponent {
-  result: SearchResult;
+  result: PaginatedSearchResult;
 
   loading: boolean = false;
+
+  error: boolean = false;
 
   filters: Filters = {
     category: Category.Sale,

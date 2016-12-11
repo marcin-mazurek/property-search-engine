@@ -3,7 +3,7 @@ import { Http, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import Filters from '../../../../core/src/filters';
-import SearchResult from '../../../../core/src/search-result';
+import PaginatedSearchResult from '../../../../core/src/paginated-search-result';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -13,7 +13,7 @@ export default class SearchService {
 
   constructor(private http: Http) { }
 
-  search(filters: Filters, page: number): Promise<SearchResult> {
+  search(filters: Filters, page: number): Promise<PaginatedSearchResult> {
     const search = new URLSearchParams();
     Object.keys(filters)
       .forEach(key => search.append(key, filters[key]));
@@ -21,6 +21,6 @@ export default class SearchService {
 
     return this.http.get(this.url, { search })
       .toPromise()
-      .then(response => response.json() as SearchResult);
+      .then(response => response.json() as PaginatedSearchResult);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import SearchResult from '../../../../core/src/search-result';
+import PaginatedSearchResult from '../../../../core/src/paginated-search-result';
 
 @Component({
   selector: 'app-search-result-table',
@@ -8,7 +8,7 @@ import SearchResult from '../../../../core/src/search-result';
 })
 export default class SearchResultTableComponent {
   @Input()
-  result: SearchResult;
+  result: PaginatedSearchResult;
 
   @Input()
   page: number;

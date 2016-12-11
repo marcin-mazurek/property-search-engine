@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Filters from '../../../../core/src/filters';
-import fetchListing from '../../../../server/src/portals/olx/fetch-listing';
 import buildFilters from './build-filters';
+import search from '../../search/search';
 
 export default async function searchHandler(request: Request, response: Response) {
   let filters: Filters;
@@ -15,9 +15,9 @@ export default async function searchHandler(request: Request, response: Response
   const page = Number(request.query['page'] || 1);
 
   try {
-    const properties = await fetchListing(filters, page);
-    response.json(properties);
+    const result = await search(filters, page);
+    response.json(result);
   } catch (e) {
-    response.status(500).json({ exception: e });
+    response.status(500).json({ exception: e.message });
   }
 }

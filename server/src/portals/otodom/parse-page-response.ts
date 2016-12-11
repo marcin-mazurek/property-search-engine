@@ -1,4 +1,4 @@
-import SearchResult from '../../../../core/src/search-result';
+import SinglePageSearchResult from '../../../../core/src/single-page-search-result';
 import Property from '../../../../core/src/property';
 import { load as parseHtml } from 'cheerio';
 import parseListingPrice from '../shared/parse-listing-price';
@@ -6,7 +6,7 @@ import parseThumbnailCss from './parse-thumbnail-css';
 import parseLocation from './parse-location';
 import cleanUrl from '../../../../core/src/clean-url';
 
-export default function parsePageResponse(html: string): SearchResult {
+export default function parsePageResponse(html: string): SinglePageSearchResult {
   const $ = parseHtml(html);
   const offers = $('.col-md-content').eq(0).find('.offer-item:not([data-featured-name="promo_top_ads"])');
   const moreResultsAvailable = $('.pager [data-dir="next"]').length > 0;

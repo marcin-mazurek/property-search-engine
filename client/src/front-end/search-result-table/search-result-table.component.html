@@ -22,5 +22,5 @@
 </table>
 <div class="pagination">
   <button md-mini-fab class="previous-page" (click)="onPageChange(page - 1)" *ngIf="page > 1"><md-icon>chevron_left</md-icon></button>
-  <button md-mini-fab class="next-page" (click)="onPageChange(page + 1)" *ngIf="result.moreResultsAvailable"><md-icon>chevron_right</md-icon></button>
+  <button md-mini-fab class="next-page" (click)="onPageChange(page + 1)" *ngIf="page < result.totalPages"><md-icon>chevron_right</md-icon></button>
 </div>
