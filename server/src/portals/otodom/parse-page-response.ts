@@ -9,7 +9,7 @@ import cleanUrl from '../../../../core/src/clean-url';
 export default function parsePageResponse(html: string): SearchResult {
   const $ = parseHtml(html);
   const offers = $('.col-md-content').eq(0).find('.offer-item:not([data-featured-name="promo_top_ads"])');
-  const moreResultsAvailable = $('.pager [data-dir]').length > 0;
+  const moreResultsAvailable = $('.pager [data-dir="next"]').length > 0;
 
   let properties: Property[] = [];
 
