@@ -2,7 +2,7 @@ import Filters, { Category, Type } from '../../../../core/src/filters';
 import * as nock from 'nock';
 import { parse } from 'url';
 import buildUrl from '../../../../server/src/portals/olx/build-url';
-import fetchListing from '../../../../server/src/portals/olx/fetch-listing';
+import fetchListingPage from '../../../../server/src/portals/olx/fetch-listing-page';
 import olxSinglePageResponse from '../../_fixtures/olx-single-page';
 import olxMultiPageResponse from '../../_fixtures/olx-multi-page';
 import { expect } from 'chai';
@@ -15,7 +15,7 @@ const filters: Filters = {
 
 const url = parse(buildUrl(filters, 1));
 
-describe('fetchListing() for OLX', () => {
+describe('fetchListingPage() for OLX', () => {
   context('one page result', () => {
     beforeEach(() => {
       nock(url.protocol + '//' + url.host)
@@ -24,7 +24,7 @@ describe('fetchListing() for OLX', () => {
     });
 
     it('fetches the OLX listing page with given filters and returns a list of properties excluding promoted and from other locations', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
 
       expect(result.properties).to.have.lengthOf(6);
 
@@ -84,7 +84,7 @@ describe('fetchListing() for OLX', () => {
     });
 
     it('indicates that no more results are available', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
       expect(result.moreResultsAvailable).to.be.false;
     });
   });
@@ -97,12 +97,12 @@ describe('fetchListing() for OLX', () => {
     });
 
     it('fetches the OLX listing page with given filters and returns a list of properties', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
       expect(result.properties).to.have.lengthOf(39);
     });
 
     it('indicates that more results are available', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
       expect(result.moreResultsAvailable).to.be.true;
     });
   });

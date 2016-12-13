@@ -2,7 +2,7 @@ import Filters, { Category, Type } from '../../../../core/src/filters';
 import * as nock from 'nock';
 import { parse } from 'url';
 import buildUrl from '../../../../server/src/portals/otodom/build-url';
-import fetchListing from '../../../../server/src/portals/otodom/fetch-listing';
+import fetchListingPage from '../../../../server/src/portals/otodom/fetch-listing-page';
 import singlePageResponse from '../../_fixtures/otodom-single-page';
 import multiPageResponse from '../../_fixtures/otodom-multi-page';
 import { expect } from 'chai';
@@ -15,7 +15,7 @@ const filters: Filters = {
 
 const url = parse(buildUrl(filters, 1));
 
-describe('fetchListing() for Otodom', () => {
+describe('fetchListingPage() for Otodom', () => {
   context('one page result', () => {
     beforeEach(() => {
       nock(url.protocol + '//' + url.host)
@@ -24,7 +24,7 @@ describe('fetchListing() for Otodom', () => {
     });
 
     it('fetches the Otodom listing page with given filters and returns a list of properties excluding promoted', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
 
       expect(result.properties).to.have.lengthOf(5);
 
@@ -74,8 +74,9 @@ describe('fetchListing() for Otodom', () => {
       });
     });
 
-    it('indicates that no more results are available', async () => {
-      const result = await fetchListing(filters);
+    it('returns the number of pages and indicates that no more results are available', async () => {
+      const result = await fetchListingPage(filters);
+      expect(result.totalPages).to.equal(1);
       expect(result.moreResultsAvailable).to.be.false;
     });
   });
@@ -88,12 +89,13 @@ describe('fetchListing() for Otodom', () => {
     });
 
     it('fetches the Otodom listing page with given filters and returns a list of properties', async () => {
-      const result = await fetchListing(filters);
+      const result = await fetchListingPage(filters);
       expect(result.properties).to.have.lengthOf(24);
     });
 
-    it('indicates that more results are available', async () => {
-      const result = await fetchListing(filters);
+    it('returns the number of pages and indicates that more results are available', async () => {
+      const result = await fetchListingPage(filters);
+      expect(result.totalPages).to.equal(2);
       expect(result.moreResultsAvailable).to.be.true;
     });
   });
