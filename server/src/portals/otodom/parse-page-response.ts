@@ -9,7 +9,7 @@ import cleanUrl from '../../../../core/src/clean-url';
 export default function parsePageResponse(html: string): SinglePageSearchResult {
   const $ = parseHtml(html);
   const offers = $('.col-md-content').eq(0).find('.offer-item:not([data-featured-name="promo_top_ads"])');
-  const moreResultsAvailable = $('.pager [data-dir="next"]').length > 0;
+  const totalPages = Number($('.pager .current').text()) || 1; 
 
   let properties: Property[] = [];
 
@@ -26,6 +26,9 @@ export default function parsePageResponse(html: string): SinglePageSearchResult 
     });
   });
 
-
-  return { properties, moreResultsAvailable };
+  return {
+    properties,
+    moreResultsAvailable: totalPages > 1,
+    totalPages
+  };
 }

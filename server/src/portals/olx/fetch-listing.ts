@@ -1,13 +1,26 @@
-import fetch from 'node-fetch';
-import SinglePageSearchResult from '../../../../core/src/single-page-search-result';
 import Filters from '../../../../core/src/filters';
-import buildUrl from './build-url';
-import parsePageResponse from './parse-page-response';
+import Property from '../../../../core/src/property';
+import SearchResult from '../../../../core/src/search-result';
 
-export default function fetchListing(filters: Filters, page: number = 1): Promise<SinglePageSearchResult> {
-  const url = buildUrl(filters, page);
-  
-  return fetch(url)
-    .then(response => response.text())
-    .then(parsePageResponse);
+import fetchListingPage from './fetch-listing-page';
+import { resultsLimit } from '../../config';
+
+export default async function fetchListing(filters: Filters): Promise<SearchResult> {
+  let page = 1;
+  let properties: Property[] = [];
+  let resultTrimmed = true;
+
+  while (properties.length < resultsLimit) {
+    const result = await fetchListingPage(filters, page);
+    properties.push(...result.properties);
+
+    if (result.moreResultsAvailable) {
+      page++;
+    } else {
+      resultTrimmed = false;
+      break;
+    }
+  }
+
+  return { properties, resultTrimmed };
 }

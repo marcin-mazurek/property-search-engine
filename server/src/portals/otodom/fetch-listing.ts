@@ -1,13 +1,36 @@
-import fetch from 'node-fetch';
-import SinglePageSearchResult from '../../../../core/src/single-page-search-result';
 import Filters from '../../../../core/src/filters';
-import buildUrl from './build-url';
-import parsePageResponse from './parse-page-response';
+import Property from '../../../../core/src/property';
+import SearchResult from '../../../../core/src/search-result';
+import fetchListingPage from './fetch-listing-page';
 
-export default function fetchListing(filters: Filters, page: number = 1): Promise<SinglePageSearchResult> {
-  const url = buildUrl(filters, page);
+const resultsPerPage = 72;
+const resultsLimit = 1000; // TODO: weird TS bug - investigate
+const maxPagesToDownload = Math.ceil(resultsLimit / resultsPerPage);
+
+export default async function fetchListing(filters: Filters): Promise<SearchResult> {
+  const properties: Property[] = [];
   
-  return fetch(url)
-    .then(response => response.text())
-    .then(parsePageResponse);
+  const firstPageResult = await fetchListingPage(filters, 1);
+  properties.push(...firstPageResult.properties);
+
+  if (!firstPageResult.moreResultsAvailable) {
+    return { properties, resultTrimmed: false };
+  }
+
+  const pagesToDownload = Math.min(firstPageResult.totalPages, maxPagesToDownload);
+  const fetchPagePromises = [];
+
+  for (let page = 2; page <= pagesToDownload; page++) {
+    fetchPagePromises.push(
+      fetchListingPage(filters, page)
+    );
+  }
+
+  const results = await Promise.all(fetchPagePromises);
+  results.forEach(result => properties.push(...result.properties));
+
+  return {
+    properties,
+    resultTrimmed: firstPageResult.totalPages > maxPagesToDownload
+  };
 }
