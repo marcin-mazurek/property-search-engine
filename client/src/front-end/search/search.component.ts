@@ -30,6 +30,7 @@ export default class SearchComponent {
 
   async onSearchSubmit(filters: Filters): Promise<void> {
     this.filters = filters;
+    this.page = 1;
     this.fetchResults();
   }
 
