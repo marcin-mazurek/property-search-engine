@@ -63,4 +63,11 @@ describe('buildUrl() for Otodom', () => {
       expect(queryString).to.contain(`${key}=${value}`);
     });
   });
+
+  it('builds a URL with nrAdsPerPage=72 param to maximalise number of ads per page', () => {
+    const queryString = getQueryStringFromUrl(
+      buildUrl(defaultFilters, 2)
+    );
+    expect(queryString).to.contain('nrAdsPerPage=72');
+  });
 });

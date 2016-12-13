@@ -14,6 +14,7 @@ export default function buildUrl(filters: Filters, page: number) : string {
   url.addSegment(TypeMap[filters.type]);
   url.addSegment(slugify(filters.location));
   url.addQueryStringParts(buildOlxOtodomQueryString(filters, page));
+  url.addQueryStringPart('nrAdsPerPage', '72');
 
   return url.build();
 }
