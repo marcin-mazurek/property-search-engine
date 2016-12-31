@@ -7,7 +7,7 @@ import sortResult from './sort-result';
 import paginateResult from './paginate-result';
 import { resultsPerPage } from '../config';
 import getRedisClient from '../db/get-redis-client';
-import createCacheKey from './create-cache-key';
+import buildCacheKey from './build-cache-key';
 
 export default async function search(filters: Filters, page: number): Promise<PaginatedSearchResult> {
   let result: SearchResult;
