@@ -6,20 +6,25 @@ import fetchFromWebsites from './fetch-from-websites';
 import sortResult from './sort-result';
 import paginateResult from './paginate-result';
 import { resultsPerPage } from '../config';
-
-// TODO: replace with Redis cache
-const cache = {};
+import getRedisClient from '../db/get-redis-client';
+import createCacheKey from './create-cache-key';
 
 export default async function search(filters: Filters, page: number): Promise<PaginatedSearchResult> {
   let result: SearchResult;
-  let cacheKey = JSON.stringify(filters);
+  let cacheKey = buildCacheKey(filters);
 
-  if (cache[cacheKey]) {
-    result = cache[cacheKey];
+  const cacheClient = await getRedisClient();
+  const cachedResult = await cacheClient.getAsync(cacheKey);
+
+  if (cachedResult) {
+    result = JSON.parse(cachedResult);
   } else {
     result = await fetchFromWebsites(filters);
-    cache[cacheKey] = result;
+    cacheClient.set(cacheKey, JSON.stringify(result));
+    cacheClient.expire(cacheKey, 60*60);
   }
+
+  cacheClient.quit();
 
   return {
     properties: paginateResult(sortResult(result.properties, 'price'), page),
