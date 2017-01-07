@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import Filters, { Category, Type } from '../../../../core/src/filters';
 import PaginatedSearchResult from '../../../../core/src/paginated-search-result';
 import SearchService from './search.service';
+import preloadImages from '../helpers/preload-images';
 
 @Component({
   selector: 'app-layout',
@@ -44,7 +45,14 @@ export default class SearchComponent {
     this.error = false;
 
     try {
-      this.result = await this.searchService.search(this.filters, this.page);
+      const result = await this.searchService.search(this.filters, this.page);
+
+      const imageSources = result.properties
+        .map(property => property.thumbnailUrl)
+        .filter(image => image !== null);
+      await preloadImages(imageSources);
+      
+      this.result = result;
     } catch (e) {
       this.result = undefined;
       this.error = true;
