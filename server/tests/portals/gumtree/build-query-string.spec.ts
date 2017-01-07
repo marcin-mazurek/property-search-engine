@@ -42,12 +42,6 @@ describe('buildQueryString()', () => {
     expect(qs.has('pr')).to.be.false;
   });
 
-  it('throws if "market" parameter is set', () => {
-    expect(() => buildQueryString(
-      mergeFilterOptionsWithDefaults({ market: Market.Secondary })
-    )).to.throw('Unsupported parameter - market');
-  });
-
   it('throws if "area from" parameter is set', () => {
     expect(() => buildQueryString(
       mergeFilterOptionsWithDefaults({ areaFrom: 20 })

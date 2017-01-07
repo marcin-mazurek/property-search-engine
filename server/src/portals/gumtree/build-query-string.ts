@@ -8,9 +8,6 @@ export default function buildQueryString(filters: Filters): Map<string, string> 
     queryParams.set('pr', value);
   }
 
-  if (filters.market) {
-    throw new Error('Unsupported parameter - market');
-  }
   if (filters.areaFrom) {
     throw new Error('Unsupported parameter - area from');
   }
