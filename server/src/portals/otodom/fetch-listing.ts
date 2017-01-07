@@ -2,9 +2,9 @@ import Filters from '../../../../core/src/filters';
 import Property from '../../../../core/src/property';
 import SearchResult from '../../../../core/src/search-result';
 import fetchListingPage from './fetch-listing-page';
+import { resultsLimit } from '../../config';
 
 const resultsPerPage = 72;
-const resultsLimit = 1000; // TODO: weird TS bug - investigate
 const maxPagesToDownload = Math.ceil(resultsLimit / resultsPerPage);
 
 export default async function fetchListing(filters: Filters): Promise<SearchResult> {
