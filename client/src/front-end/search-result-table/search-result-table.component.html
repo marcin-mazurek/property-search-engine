@@ -16,7 +16,8 @@
       <td class="mdl-data-table__cell--non-numeric">{{ property.title }}</td>
       <td class="mdl-data-table__cell--non-numeric">{{ property.location }}</td>
       <td>{{ property.added }}</td>
-      <td>{{ property.price }}&nbsp;zł</td>
+      <td *ngIf="property.price">{{ property.price }}&nbsp;zł</td>
+      <td *ngIf="!property.price">Not specified</td>
     </tr>
   </tbody>
 </table>
