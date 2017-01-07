@@ -8,6 +8,5 @@ function preloadImage(source: string) {
 
 export default function preloadImages(sources: string[]) {
   const promises = sources.map(preloadImage);
-  console.log(sources);
   return Promise.all(promises);
 }
