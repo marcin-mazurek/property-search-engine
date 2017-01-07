@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import Filters, { Category, Type } from '../../../../core/src/filters';
 import PaginatedSearchResult from '../../../../core/src/paginated-search-result';
 import SearchService from './search.service';
+import FiltersService from './filters.service';
 import preloadImages from '../helpers/preload-images';
 
 @Component({
@@ -18,14 +19,11 @@ export default class SearchComponent {
 
   error: boolean = false;
 
-  filters: Filters = {
-    category: Category.Sale,
-    type: Type.Apartment,
-    location: 'Warszawa',
-    excludeKeyword: 'tbs'
-  };
+  filters: Filters;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private filtersService: FiltersService) {
+    this.filters = this.filtersService.getInitialValue();
+  }
 
   page: number = 1;
 
@@ -33,6 +31,7 @@ export default class SearchComponent {
     this.filters = filters;
     this.page = 1;
     this.fetchResults();
+    this.filtersService.save(filters);
   }
 
   async onPageChange(page: number): Promise<void> {
